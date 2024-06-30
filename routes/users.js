@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const plm = require("passport-local-mongoose");
 
-mongoose.connect("mongodb://127.0.0.1:27017/instainsta");
+mongoose.connect("mongodb://127.0.0.1:27017/instainsta");// setting up database and initializing where is it on the laptop
 
-const userSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({ //this code shows which all details from each user will be saved in database
   username: String,
   name: String,
   email: String,
@@ -44,6 +44,6 @@ const userSchema = mongoose.Schema({
   ]
 })
 
-userSchema.plugin(plm);
+userSchema.plugin(plm); //provides serialized and deserialized users
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model("user", userSchema);//allows us to create, read, update and delete from database
