@@ -210,8 +210,8 @@ router.post("/register", function (req, res) {
     name: req.body.name,
   });
 
-  userModel.register(user, req.body.password).then(function (registereduser) {
-    passport.authenticate("local")(req, res, function () {
+  userModel.register(user, req.body.password).then(function (registereduser) {// makes an account for user
+    passport.authenticate("local")(req, res, function () { // login user after authentication and help to stay logged in
       res.redirect("/profile");
     });
   });
