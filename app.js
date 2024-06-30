@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var expressSession = require('express-session');
+const expressSession = require('express-session');    //this code will help user to stay logged in
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -16,12 +16,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(expressSession({
-  resave: false,
+  resave: false,                    //this code will help user to stay logged in and ALLOWS to save data
   saveUninitialized: false,
   secret: "heyheyehhdd"
 }));
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.initialize()); // is a package which helps to verify a user is logged in and watch protexted routes
+app.use(passport.session()); //But this code SAVES the data
 passport.serializeUser(usersRouter.serializeUser());
 passport.deserializeUser(usersRouter.deserializeUser());
 
